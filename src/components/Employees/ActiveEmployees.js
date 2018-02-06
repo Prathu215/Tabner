@@ -239,6 +239,13 @@ class ActiveEmployees extends Component {
         </div>;
     }
 
+
+    emailTemplate(rowData, column) {
+        let email = rowData.email_id;
+        let color='blue'
+        return <a href="mailto:{email}"><span style={{color:color}}>{email}</span></a>
+    }
+
     render() {
         const {search, value} = this.state;
 
@@ -285,7 +292,7 @@ class ActiveEmployees extends Component {
                                 sortable={true}/>
                         <Column columnKey="last_name" field="last_name" header="Last Name"
                                 sortable={true}/>
-                        <Column columnKey="email_id" field="email_id" header="Email" sortable={true}/>
+                        <Column columnKey="email_id" field="email_id" header="Email"  body={this.emailTemplate}  sortable={true}/>
                         <Column columnKey="mobile_num" field="mobile_num" header="Mobile"
                                 sortable={true}/>
                         <Column columnKey="ssn" field="ssn" header="SSN"
